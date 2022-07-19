@@ -1,0 +1,10 @@
+.form-content {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: rgba(127, 209, 232, 0.319);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
+}

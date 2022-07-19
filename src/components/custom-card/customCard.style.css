@@ -1,0 +1,22 @@
+.card {
+  background: linear-gradient(to right, rgb(141, 236, 243), rgb(229, 240, 239));
+  box-shadow: -5px 5px 5px rgb(72, 68, 68);
+}
+
+.card-title {
+  font-size: 3rem !important;
+  border: 6px double red;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
