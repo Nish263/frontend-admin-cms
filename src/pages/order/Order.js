@@ -68,18 +68,22 @@ const Order = () => {
           </tr>
         </thead>
         <tbody>
-          {dispOrder.map((item, i) => (
-            <tr key={i}>
-              <td>{i + 1}</td>
-              <td>{item.status}</td>
-              <td>{item.buyer.fname}</td>
-              <td>{item.totalAmount}</td>
-              <td>{item.paymentInfo.status}</td>
-              <td>
-                <Link to={`/orders/${item._id}`}> Info </Link>
-              </td>
-            </tr>
-          ))}
+          {dispOrder.map(
+            (item, i) =>
+              i >= productStartAt &&
+              i < productEndAt && (
+                <tr key={i}>
+                  <td>{i + 1}</td>
+                  <td>{item.status}</td>
+                  <td>{item.buyer.fname}</td>
+                  <td>{item.totalAmount}</td>
+                  <td>{item.paymentInfo.status}</td>
+                  <td>
+                    <Link to={`/orders/${item._id}`}> Info </Link>
+                  </td>
+                </tr>
+              )
+          )}
         </tbody>
       </Table>
       <PaginationComp
