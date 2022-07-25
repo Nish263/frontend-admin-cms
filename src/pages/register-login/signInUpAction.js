@@ -61,7 +61,7 @@ export const authoAdminLogin = () => async (dispatch) => {
     const token = await requestNewAccessJWT();
     token ? dispatch(fetchUser()) : dispatch(adminLogout());
   } else {
-    dispatch(adminLogout());
+    // dispatch(adminLogout());
   }
 };
 
