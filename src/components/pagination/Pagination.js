@@ -1,10 +1,6 @@
 import React from "react";
 import Pagination from "react-bootstrap/Pagination";
-export const PaginationComp = ({
-  pages,
-  active = 1,
-  handleOnPagenationClick,
-}) => {
+export const PaginationComp = ({ pages, active, handleOnPagenationClick }) => {
   let items = [];
   for (let number = 1; number <= pages; number++) {
     items.push(

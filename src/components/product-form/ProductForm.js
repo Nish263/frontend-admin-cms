@@ -50,7 +50,8 @@ export const ProductForm = () => {
     for (const key in form) {
       formData.append(key, form[key]);
     }
-    images.length && [...images].map((img) => formData.append("images", img));
+
+    length && [...images].map((img) => formData.append("images", img));
     dispatch(postProductAction(formData));
   };
 

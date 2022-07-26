@@ -88,6 +88,7 @@ export const ProductTable = () => {
               />
             </th>
             <th>#</th>
+            <th>Thumbnail</th>
             <th>Status</th>
             <th>Name</th>
             <th>QTY</th>
@@ -111,6 +112,16 @@ export const ProductTable = () => {
                 />
               </td>
               <td>{i + 1}</td>
+              <td>
+                {item.images.length > 0 && (
+                  <img
+                    src={"http://localhost:8000/" + item.images[0].substr(6)}
+                    alt=""
+                    width="80px"
+                    crossOrigin="anonymous"
+                  />
+                )}
+              </td>
               <td
                 className={
                   item.status === "active" ? "text-success" : "text-danger"

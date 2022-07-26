@@ -41,12 +41,14 @@ export const deleteProductAction = (ids) => async (dispatch) => {
 };
 
 export const updateProductAction = (obj) => async (dispatch) => {
-  const response = await updateProducts(obj);
-  response.status === "success" && dispatch(setSelectedProducts(response));
-  // toast.promise(response, {
-  //   pending: "Please wait...",
-  // });
-  // const { status, message, result } = await response;
-  // // toast[status](message);
-  // status === "success" && dispatch(setSelectedProducts(result));
+  const response = updateProducts(obj);
+  toast.promise(response, {
+    pending: "Please wait...",
+  });
+  const { status, message, result } = await response;
+  toast[status](message);
+  if (status === "success") {
+    dispatch(setSelectedProducts(result));
+    dispatch(fetchProductsAction());
+  }
 };
