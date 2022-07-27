@@ -196,6 +196,7 @@ export const getProducts = () => {
     },
   });
 };
+
 export const getSingleProducts = (_id) => {
   const url = productEP + "/" + _id;
   return apiProcessor({
@@ -255,15 +256,21 @@ export const getPaymentMethods = () => {
     },
   });
 };
+
 export const postPaymentMethod = (dataObj) => {
   const url = paymentMethodEP;
   return apiProcessor({
-    method: "put",
+    method: "post",
     url,
     dataObj,
-    headers: {
-      Authorization: sessionStorage.getItem("accessJWT"),
-    },
+    //
+  });
+};
+export const deletePaymentMethod = (_id) => {
+  const url = paymentMethodEP + "/" + _id;
+  return apiProcessor({
+    method: "delete",
+    url,
   });
 };
 

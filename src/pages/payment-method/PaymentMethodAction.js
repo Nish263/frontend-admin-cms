@@ -1,5 +1,9 @@
 import { toast } from "react-toastify";
-import { getPaymentMethods, postPaymentMethod } from "../../helper/axiosHelper";
+import {
+  deletePaymentMethod,
+  getPaymentMethods,
+  postPaymentMethod,
+} from "../../helper/axiosHelper";
 import { setPaymentMethods } from "./PaymentMethodSlice";
 
 export const fetchPaymentMethods = () => async (dispatch) => {
@@ -11,7 +15,7 @@ export const fetchPaymentMethods = () => async (dispatch) => {
 };
 export const postPaymentMethodAction = (obj) => async (dispatch) => {
   // call axios to cal api
-  const responsePromise = postPaymentMethod();
+  const responsePromise = postPaymentMethod(obj);
 
   toast.promise(responsePromise, {
     pending: "Please wait",
@@ -19,6 +23,19 @@ export const postPaymentMethodAction = (obj) => async (dispatch) => {
   const response = await responsePromise;
   toast[response.status](response.message);
 
-  response.status === "success" && dispatch(setPaymentMethods());
+  response.status === "success" && dispatch(fetchPaymentMethods());
+  //   get data to set to state
+};
+export const deletePaymentMethodAction = (_id) => async (dispatch) => {
+  // call axios to cal api
+  const responsePromise = deletePaymentMethod(_id);
+
+  toast.promise(responsePromise, {
+    pending: "Please wait",
+  });
+  const response = await responsePromise;
+  toast[response.status](response.message);
+
+  response.status === "success" && dispatch(fetchPaymentMethods());
   //   get data to set to state
 };

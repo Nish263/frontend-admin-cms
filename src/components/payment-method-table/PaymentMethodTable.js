@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPaymentMethods } from "../../pages/payment-method/PaymentMethodAction";
+import {
+  fetchPaymentMethods,
+  deletePaymentMethodAction,
+} from "../../pages/payment-method/PaymentMethodAction";
 
 export const PaymentMethodTable = () => {
   const dispatch = useDispatch();
@@ -42,10 +45,18 @@ export const PaymentMethodTable = () => {
                   ></i>
                 </td>
                 <td>
-                  <Button variant="warning">
+                  <Button variant="warning" title="Edit">
                     <i class="fa-solid fa-pen-to-square"></i>
                   </Button>{" "}
-                  <Button variant="danger">
+                  <Button
+                    variant="danger"
+                    title="Delete"
+                    onClick={() =>
+                      window.confirm(
+                        "Are you sure you want to delete this payment method?"
+                      ) && dispatch(deletePaymentMethodAction(_id))
+                    }
+                  >
                     <i class="fa-solid fa-trash"></i>
                   </Button>
                 </td>

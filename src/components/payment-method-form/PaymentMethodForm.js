@@ -37,6 +37,7 @@ export const PaymentMethodForm = () => {
       name: "description",
       label: "Description",
       type: "text",
+      as: "textarea",
       required: true,
     },
   ];
