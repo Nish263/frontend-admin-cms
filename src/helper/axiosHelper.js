@@ -246,8 +246,8 @@ export const updateProducts = (dataObj) => {
 
 // ##=========payment api===========
 
-export const getPaymentMethods = () => {
-  const url = paymentMethodEP;
+export const getPaymentMethods = (_id) => {
+  const url = _id ? paymentMethodEP + "/" + _id : paymentMethodEP;
   return apiProcessor({
     method: "get",
     url,
@@ -263,17 +263,35 @@ export const postPaymentMethod = (dataObj) => {
     method: "post",
     url,
     dataObj,
+    headers: {
+      Authorization: sessionStorage.getItem("accessJWT"),
+    },
     //
   });
 };
+
 export const deletePaymentMethod = (_id) => {
   const url = paymentMethodEP + "/" + _id;
   return apiProcessor({
     method: "delete",
     url,
+    headers: {
+      Authorization: sessionStorage.getItem("accessJWT"),
+    },
   });
 };
 
+export const updatePaymentMethod = (dataObj) => {
+  const url = paymentMethodEP;
+  return apiProcessor({
+    method: "put",
+    url,
+    dataObj,
+    headers: {
+      Authorization: sessionStorage.getItem("accessJWT"),
+    },
+  });
+};
 // ===========customer  apis
 
 export const getCustomer = (_id) => {
@@ -281,9 +299,6 @@ export const getCustomer = (_id) => {
   return apiProcessor({
     method: "get",
     url,
-    headers: {
-      Authorization: sessionStorage.getItem("accessJWT"),
-    },
   });
 };
 export const getReview = (_id) => {

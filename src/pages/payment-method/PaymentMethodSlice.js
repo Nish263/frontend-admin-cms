@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   paymentMethods: [],
-  selectedPaymentMethod: {},
+  selectedPaymentMethods: {},
 };
 const paymentMethodSlice = createSlice({
   name: "paymentMethod",
@@ -13,11 +13,11 @@ const paymentMethodSlice = createSlice({
     },
 
     setSelectedPaymentMethods: (state, { payload = {} }) => {
-      state.selectedPaymentMethod = payload;
+      state.selectedPaymentMethods = payload;
     },
   },
 });
 
 const { reducer, actions } = paymentMethodSlice;
-export const { setPaymentMethods, setSelectedPaymentMethod } = actions;
+export const { setPaymentMethods, setSelectedPaymentMethods } = actions;
 export default reducer;

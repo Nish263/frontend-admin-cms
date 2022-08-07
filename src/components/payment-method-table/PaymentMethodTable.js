@@ -4,19 +4,29 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchPaymentMethods,
   deletePaymentMethodAction,
+  editPaymentMethodAction,
+  fetchSinglePaymentMethod,
 } from "../../pages/payment-method/PaymentMethodAction";
+import { EditPaymentMethodForm } from "../payment-method-form/EditPaymentMethodForm";
+import { PaymentMethodForm } from "../payment-method-form/PaymentMethodForm";
 
-export const PaymentMethodTable = () => {
+export const PaymentMethodTable = ({ showForm, setShowForm }) => {
   const dispatch = useDispatch();
 
-  const { paymentMethods } = useSelector((state) => state.paymentMethod);
+  const { paymentMethods } = useSelector((state) => state.paymentMethods);
 
   useEffect(() => {
     dispatch(fetchPaymentMethods());
   }, []);
 
+  const handleOnEditForm = (_id) => {
+    setShowForm(false);
+    dispatch(editPaymentMethodAction(_id));
+  };
   return (
     <div className="">
+      {showForm ? <PaymentMethodForm /> : <EditPaymentMethodForm />}
+
       <div className="mb-3 fw-bold">
         {" "}
         {paymentMethods.length} Payment methods found!!!!
@@ -45,7 +55,11 @@ export const PaymentMethodTable = () => {
                   ></i>
                 </td>
                 <td>
-                  <Button variant="warning" title="Edit">
+                  <Button
+                    variant="warning"
+                    title="Edit"
+                    onClick={() => dispatch(fetchSinglePaymentMethod(_id))}
+                  >
                     <i class="fa-solid fa-pen-to-square"></i>
                   </Button>{" "}
                   <Button
