@@ -15,7 +15,7 @@ export const EditPaymentMethodForm = () => {
   const dispatch = useDispatch();
   const [form, setForm] = useState(initialState);
   const { selectedPaymentMethods } = useSelector(
-    (state) => state.paymentMethods
+    (state) => state.paymentMethod
   );
 
   useEffect(() => {

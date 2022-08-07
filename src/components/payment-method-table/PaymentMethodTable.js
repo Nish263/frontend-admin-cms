@@ -13,7 +13,7 @@ import { PaymentMethodForm } from "../payment-method-form/PaymentMethodForm";
 export const PaymentMethodTable = ({ showForm, setShowForm }) => {
   const dispatch = useDispatch();
 
-  const { paymentMethods } = useSelector((state) => state.paymentMethods);
+  const { paymentMethods } = useSelector((state) => state.paymentMethod);
 
   useEffect(() => {
     dispatch(fetchPaymentMethods());
